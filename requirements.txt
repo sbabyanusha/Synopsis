@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pypdf2
+python-docx
+pandas
+openpyxl
+ollama
+langchain
+chromadb
+langchain-openai
+langchain-community
+langchain-chroma
+streamlit
+requests
