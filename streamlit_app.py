@@ -12,7 +12,7 @@ if pdf_file:
     if st.button("Summarize PDF"):
         with st.spinner("Summarizing..."):
             response = requests.post(
-                "http://localhost:8002/summarize_pdf/",
+                "https://gene-backend.onrender.com/summarize_pdf/",
                 files={"file": (pdf_file.name, pdf_file, "application/pdf")}
             )
         if response.ok:
@@ -27,12 +27,12 @@ if pdf_file:
     if st.button("Ask Question") and question:
         with st.spinner("Generating answer..."):
             ingest_response = requests.post(
-                "http://localhost:8002/ingest_pdf/",
+                "https://gene-backend.onrender.com/ingest_pdf/",
                 files={"file": (pdf_file.name, pdf_file, "application/pdf")}
             )
             if ingest_response.ok:
                 answer_response = requests.post(
-                    "http://localhost:8002/generate_evidence/",
+                    "https://gene-backend.onrender.com/generate_evidence/",
                     data={"question": question}
                 )
                 if answer_response.ok:
@@ -63,7 +63,7 @@ if st.button("Analyze Gene Frequencies") and clin_file and genes:
     if sv_file: files["sv_file"] = ("data_sv.txt", sv_file, "text/plain")
 
     response = requests.post(
-        "http://localhost:8002/gene_frequencies_from_supp/",
+        "https://gene-backend.onrender.com/gene_frequencies_from_supp/",
         data={"genes": genes},
         files=files,
     )
